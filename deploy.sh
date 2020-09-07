@@ -3,13 +3,13 @@ docker build -t admirhadzic/multi-worker:latest -t admirhadzic/multi-worker:$GIT
 docker build -t admirhadzic/multi-server:latest -t admirhadzic/multi-server:$GIT_SHA -f ./server/Dockerfile ./server
 
 docker push admirhadzic/multi-server:latest
-docker push admirhadzic/multi-server$GIT_SHA
+docker push admirhadzic/multi-server:$GIT_SHA
 
 docker push admirhadzic/multi-client:latest
-docker push admirhadzic/multi-client$GIT_SHA
+docker push admirhadzic/multi-client:$GIT_SHA
 
 docker push admirhadzic/multi-worker:latest
-docker push admirhadzic/multi-worker$GIT_SHA
+docker push admirhadzic/multi-worker:$GIT_SHA
 
 kubectl apply -f k8s
 kubectl set image deployments/server-deployment server=admirhadzic/multi-server:$GIT_SHA
